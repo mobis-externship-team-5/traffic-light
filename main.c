@@ -22,8 +22,8 @@ typedef struct car_t{
 	int car_velocity;
 } CAR;
 
-int print_char(char a, int b);
-int struc_copy(TRAFFIC_LIGHT *A, TRAFFIC_LIGHT *B);
+void print_char(char a, int b);
+void struc_copy(TRAFFIC_LIGHT *A, TRAFFIC_LIGHT *B);
 int get_sum_arr(int arr[],int len){
 	int sum = 0;
 	for(int i = 0; i<len; i++){
@@ -51,6 +51,7 @@ int check_color(int  arr[],int time,int sum_period,int len){
 		if(check_flag <= flag[k])
 			return k;
 	}
+	return 0;
 }
 
 int set_int(char a){
@@ -218,43 +219,43 @@ int main(void)
 		}
 		printf("\n\n\n TRAFFIC IGNITE STRAT TIME :   %s\n",temp.traffic_light_starttime);
 		printf(" CURRENT TIME                    :   %d:%d:%d\n",t->tm_hour,t->tm_min,recent_time%60);
-		printf(" SIGNAL PERIOD                   G : %d s | Y : %d s | R : %d s %d\n",temp.light_cycle[0],temp.light_cycle[1],temp.light_cycle[2]);
+		printf(" SIGNAL PERIOD                   G : %d s | Y : %d s | R : %d s \n",temp.light_cycle[0],temp.light_cycle[1],temp.light_cycle[2]);
 		printf(" DISTANCE T0 TRAFFIC LIGHT       :   %d m\n",get_distance(temp.traffic_light_axis,car.car_axis));
 		printf(" TRAFFIC LIGHT COLOR             :   %s\n", color[color_flag] );
 		printf(" VEHICLE        		 :   %d m / sec \n\n",car.car_velocity);
 
 		print_char('+',110);
-		printf("\n");
-		printf("\n");
-		print_char('-',110);
-		printf("\n");
-		print_char(' ',48);
-		printf("LIGHT");
-		print_char(' ',43);
-		printf("LIGHT");
-		printf("\n");
-		print_char(' ',48);
-		printf("%s",color[color_flag_1]);                
-		print_char(' ',48);
-		printf("%s",color[color_flag_2]);
-		printf("\n");
-		print_char('=',count);
-		printf("|CAR|");
-		print_char('=',105-count);
-		printf("\n");
-		print_char(' ',48);
-		printf("%s",color[color_flag_1]);
-		print_char(' ',48);
-		printf("%s",color[color_flag_2]);
-		printf("\n");
-		printf("\n");
-		print_char('-',110);
+                printf("\n");
+                printf("\n");
+                print_char('-',110);
+                printf("\n");
+                print_char(' ',48);
+                printf("LIGHT");
+                print_char(' ',45);
+                printf("LIGHT");
+                printf("\n");
+                print_char(' ',49);
+                printf("%s",color[color_flag_1]);
+                print_char(' ',52);
+                printf("%s",color[color_flag_2]);
+                printf("\n");
+                print_char('=',count);
+                printf("|CAR|");
+                print_char('=',105-count);
+                printf("\n");
+                print_char(' ',49);
+                printf("%s",color[color_flag_1]);
+                print_char(' ',52);
+                printf("%s",color[color_flag_2]);
+                printf("\n");
+                printf("\n");
+                print_char('-',110);
 
-		printf("\n");
-		printf("\n");
-		print_char('+',110);
-		printf("\n");
-		printf("\n");
+                printf("\n");
+                printf("\n");
+                print_char('+',110);
+                printf("\n");
+                printf("\n"); 
 
 		recent_time++;
 		car.car_axis.x += car.car_velocity;
@@ -269,11 +270,12 @@ int main(void)
 	return 0;
 }
 
-int print_char(char a,int num){
+void print_char(char a,int num){
 	for(int i = 0; i<num; i++)
 		printf("%c",a);
 }
-int struc_copy(TRAFFIC_LIGHT *A, TRAFFIC_LIGHT *B){
+
+void struc_copy(TRAFFIC_LIGHT *A, TRAFFIC_LIGHT *B){
 	A->traffic_light_axis.x = B->traffic_light_axis.x;
 	A->traffic_light_axis.y = B->traffic_light_axis.y;
 	A->limit_speed = B->limit_speed ;
